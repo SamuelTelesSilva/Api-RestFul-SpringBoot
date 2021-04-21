@@ -27,6 +27,10 @@ public class CarroService {
         return carrosRepository.findByTipo(tipo);
     }
 
+    public Carro save(Carro carro) {
+        return carrosRepository.save(carro);
+    }
+
      
 
 }
