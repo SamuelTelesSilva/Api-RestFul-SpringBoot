@@ -53,6 +53,13 @@ public class CarroService {
         }
     }
 
+    public void delete(Long id) {
+        Optional<Carro> carro = getCarrosById(id); //Estou pegando o registro passado pelo id
+        if(carro.isPresent()){ //aqui estou verificando se o registro existe
+            carrosRepository.deleteById(id);
+        }
+    }
+
 
 
      
