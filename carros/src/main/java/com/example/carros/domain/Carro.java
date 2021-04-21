@@ -12,11 +12,20 @@ public class Carro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String tipo;
 
     public Carro() {
-        
+
     }
     
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public Carro(Long id, String nome) {
         this.id = id;
         this.nome = nome;

@@ -1,6 +1,5 @@
 package com.example.carros.api;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.example.carros.domain.Carro;
@@ -29,6 +28,11 @@ public class CarrosController {
     @GetMapping("/{id}")
     public Optional<Carro> getCarroById(@PathVariable("id") Long id){
         return service.getCarrosById(id);
+    }
+
+    @GetMapping("/tipo/{tipo}")
+    public Iterable<Carro> getCarroByTipo(@PathVariable("tipo") String tipo){
+        return service.getCarrosByTipo(tipo);
     }
 
 }

@@ -23,6 +23,10 @@ public class CarroService {
         return carrosRepository.findById(id);
     }
 
+    public Iterable<Carro> getCarrosByTipo(String tipo){
+        return carrosRepository.findByTipo(tipo);
+    }
+
      
 
 }
