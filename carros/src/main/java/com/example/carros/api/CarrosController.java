@@ -1,11 +1,14 @@
 package com.example.carros.api;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.example.carros.domain.Carro;
 import com.example.carros.domain.CarroService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,18 +30,24 @@ public class CarrosController {
     private CarroService service;
 
     @GetMapping
-    public Iterable<Carro> get(){
-        return service.getCarros();
+    public ResponseEntity<Iterable<Carro>> get(){
+        return ResponseEntity.ok(service.getCarros()); //mesma coisa do de baixo
+        //return new ResponseEntity<>(service.getCarros(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Optional<Carro> getCarroById(@PathVariable("id") Long id){
-        return service.getCarrosById(id);
+    public ResponseEntity getCarroById(@PathVariable("id") Long id){
+        Optional<Carro> carro = service.getCarrosById(id);
+        
+        return carro.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/tipo/{tipo}")
-    public Iterable<Carro> getCarroByTipo(@PathVariable("tipo") String tipo){
-        return service.getCarrosByTipo(tipo);
+    public ResponseEntity getCarroByTipo(@PathVariable("tipo") String tipo){
+        List<Carro> carros = service.getCarrosByTipo(tipo);
+
+        return carros.isEmpty() ? ResponseEntity.noContent().build() : 
+                ResponseEntity.ok(carros);
     }
 
     @PostMapping

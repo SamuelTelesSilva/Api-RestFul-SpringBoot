@@ -24,7 +24,7 @@ public class CarroService {
         return carrosRepository.findById(id);
     }
 
-    public Iterable<Carro> getCarrosByTipo(String tipo){
+    public List<Carro> getCarrosByTipo(String tipo){
         return carrosRepository.findByTipo(tipo);
     }
 
@@ -54,8 +54,8 @@ public class CarroService {
     }
 
     public void delete(Long id) {
-        Optional<Carro> carro = getCarrosById(id); //Estou pegando o registro passado pelo id
-        if(carro.isPresent()){ //aqui estou verificando se o registro existe
+        Optional<Carro> carro = getCarrosById(id); 
+        if(carro.isPresent()){
             carrosRepository.deleteById(id);
         }
     }
