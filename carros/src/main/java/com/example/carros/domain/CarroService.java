@@ -3,6 +3,9 @@ package com.example.carros.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import com.example.carros.domain.dto.CarroDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,16 +19,16 @@ public class CarroService {
     CarrosRepository carrosRepository;
     
 
-    public Iterable<Carro> getCarros(){
-        return carrosRepository.findAll();
+    public List<CarroDTO> getCarros(){
+        return carrosRepository.findAll().stream().map(CarroDTO::new).collect(Collectors.toList());
     }
 
     public Optional<Carro> getCarrosById(Long id){
         return carrosRepository.findById(id);
     }
 
-    public List<Carro> getCarrosByTipo(String tipo){
-        return carrosRepository.findByTipo(tipo);
+    public List<CarroDTO> getCarrosByTipo(String tipo){
+        return carrosRepository.findByTipo(tipo).stream().map(CarroDTO::new).collect(Collectors.toList());
     }
 
     public Carro insert(Carro carro) {
