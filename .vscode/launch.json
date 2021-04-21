@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CarrosApplication<carros>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.example.carros.CarrosApplication",
+            "projectName": "carros",
+            "args": ""
+        }
+    ]
+}
