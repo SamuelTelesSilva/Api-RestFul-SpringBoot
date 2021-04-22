@@ -43,6 +43,7 @@ public class CarroService {
         Optional<Carro> optional = carrosRepository.findById(id);
         if(optional.isPresent()) {
             Carro db = optional.get();
+            
             // Copiar as propriedades
             db.setNome(carro.getNome());
             db.setTipo(carro.getTipo());
