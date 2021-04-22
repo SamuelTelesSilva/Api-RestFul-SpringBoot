@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.example.carros.api.exception.ObjectNotFoundException;
 import com.example.carros.domain.dto.CarroDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,9 @@ public class CarroService {
         return carrosRepository.findAll().stream().map(CarroDTO::create).collect(Collectors.toList());
     }
 
-    public Optional<CarroDTO> getCarrosById(Long id){
-        return carrosRepository.findById(id).map(CarroDTO::create);
+    public CarroDTO getCarrosById(Long id){
+        Optional<Carro> carro = carrosRepository.findById(id);
+        return carro.map(CarroDTO::create).orElseThrow(() -> new ObjectNotFoundException("Carro não encontrado"));
     }
 
     public List<CarroDTO> getCarrosByTipo(String tipo){
@@ -59,16 +61,8 @@ public class CarroService {
         }
     }
 
-    public boolean delete(Long id) {
-        if(getCarrosById(id).isPresent()){
-            carrosRepository.deleteById(id);
-            return true;
-        }
-        return false;
+    public void delete(Long id) {
+        carrosRepository.deleteById(id);
     }
-
-
-
-     
 
 }
