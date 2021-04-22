@@ -11,6 +11,10 @@ import lombok.Data;
 @Data
 public class Carro {
 
+    /**
+     * Um objeto pode ter muitos atributos, para retornar apenas os atributos que eu quero é utilizado o DTO
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

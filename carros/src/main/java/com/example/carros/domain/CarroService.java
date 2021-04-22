@@ -20,15 +20,15 @@ public class CarroService {
     
 
     public List<CarroDTO> getCarros(){
-        return carrosRepository.findAll().stream().map(CarroDTO::new).collect(Collectors.toList());
+        return carrosRepository.findAll().stream().map(CarroDTO::create).collect(Collectors.toList());
     }
 
-    public Optional<Carro> getCarrosById(Long id){
-        return carrosRepository.findById(id);
+    public Optional<CarroDTO> getCarrosById(Long id){
+        return carrosRepository.findById(id).map(CarroDTO::create);
     }
 
     public List<CarroDTO> getCarrosByTipo(String tipo){
-        return carrosRepository.findByTipo(tipo).stream().map(CarroDTO::new).collect(Collectors.toList());
+        return carrosRepository.findByTipo(tipo).stream().map(CarroDTO::create).collect(Collectors.toList());
     }
 
     public Carro insert(Carro carro) {
@@ -36,29 +36,30 @@ public class CarroService {
         return carrosRepository.save(carro);
     }
 
-    public Carro update(Carro carro, Long id){
-        Assert.notNull(id, "Não foi possivel atualizar o registro");
+    public CarroDTO update(Carro carro, Long id) {
+        Assert.notNull(id,"Não foi possível atualizar o registro");
 
-        //Buscar o carro no bd
-        Optional<Carro> optional = getCarrosById(id);
-        if(optional.isPresent()){
+        // Busca o carro no banco de dados
+        Optional<Carro> optional = carrosRepository.findById(id);
+        if(optional.isPresent()) {
             Carro db = optional.get();
-
-            //copia as propriedades
+            // Copiar as propriedades
             db.setNome(carro.getNome());
             db.setTipo(carro.getTipo());
+            System.out.println("Carro id " + db.getId());
 
-            //Atualiza o registro
+            // Atualiza o carro
             carrosRepository.save(db);
-            return db;
-        }else{
-            throw new RuntimeException("Não foi possível atualizar o registro");
+
+            return CarroDTO.create(db);
+        } else {
+            return null;
+            //throw new RuntimeException("Não foi possível atualizar o registro");
         }
     }
 
     public void delete(Long id) {
-        Optional<Carro> carro = getCarrosById(id); 
-        if(carro.isPresent()){
+        if(getCarrosById(id).isPresent()){
             carrosRepository.deleteById(id);
         }
     }
