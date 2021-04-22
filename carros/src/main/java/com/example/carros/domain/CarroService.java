@@ -43,7 +43,7 @@ public class CarroService {
         Optional<Carro> optional = carrosRepository.findById(id);
         if(optional.isPresent()) {
             Carro db = optional.get();
-            
+
             // Copiar as propriedades
             db.setNome(carro.getNome());
             db.setTipo(carro.getTipo());
@@ -59,10 +59,12 @@ public class CarroService {
         }
     }
 
-    public void delete(Long id) {
+    public boolean delete(Long id) {
         if(getCarrosById(id).isPresent()){
             carrosRepository.deleteById(id);
+            return true;
         }
+        return false;
     }
 
 
