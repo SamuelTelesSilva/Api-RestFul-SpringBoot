@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CarrosRepository extends JpaRepository<Carro,Long>{
     List<Carro> findByTipo(String tipo, Pageable pageable);
+    List<Carro> findByNomeContaining(String query);
 }

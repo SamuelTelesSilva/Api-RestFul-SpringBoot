@@ -65,6 +65,19 @@ public class CarrosController {
                 ResponseEntity.ok(carros);
     }
 
+    /**
+     * /search?query=Lamborghini
+     * @param query
+     * @return
+     */
+    @GetMapping("/search")
+    public ResponseEntity search(@RequestParam("query") String query) {
+    List<CarroDTO> carros = service.search(query);
+    return carros.isEmpty() ?
+            ResponseEntity.noContent().build() :
+            ResponseEntity.ok(carros);
+    }
+
     
     @PostMapping
     @Secured({"ROLE_ADMIN"})
