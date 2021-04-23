@@ -1,11 +1,7 @@
-package com.example.carros.api;
+package com.example.carros.api.carros;
 
 import java.net.URI;
 import java.util.List;
-
-import com.example.carros.domain.Carro;
-import com.example.carros.domain.CarroService;
-import com.example.carros.domain.dto.CarroDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

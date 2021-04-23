@@ -1,4 +1,4 @@
-package com.example.carros.domain;
+package com.example.carros.api.carros;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

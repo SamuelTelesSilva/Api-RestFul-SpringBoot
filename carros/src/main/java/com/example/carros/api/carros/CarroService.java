@@ -1,12 +1,11 @@
-package com.example.carros.domain;
+package com.example.carros.api.carros;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.example.carros.api.exception.ObjectNotFoundException;
-import com.example.carros.domain.dto.CarroDTO;
+import com.example.carros.api.infra.exception.ObjectNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

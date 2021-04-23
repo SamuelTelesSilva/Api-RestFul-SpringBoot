@@ -1,4 +1,4 @@
-package com.example.carros.api.security.jwt.handler;
+package com.example.carros.api.infra.security.jwt.handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.carros.api.security.jwt.ServletUtil;
+import com.example.carros.api.infra.security.jwt.ServletUtil;
 
 import java.io.IOException;
 

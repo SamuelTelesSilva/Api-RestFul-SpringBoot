@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.carros.domain.Carro;
-import com.example.carros.domain.CarroService;
-import com.example.carros.domain.dto.CarroDTO;
+import com.example.carros.api.carros.Carro;
+import com.example.carros.api.carros.CarroDTO;
+import com.example.carros.api.carros.CarroService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

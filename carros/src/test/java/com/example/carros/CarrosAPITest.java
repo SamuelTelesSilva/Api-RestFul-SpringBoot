@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
-import com.example.carros.domain.Carro;
-import com.example.carros.domain.CarroService;
-import com.example.carros.domain.dto.CarroDTO;
+import com.example.carros.api.carros.Carro;
+import com.example.carros.api.carros.CarroDTO;
+import com.example.carros.api.carros.CarroService;
 
 import org.junit.jupiter.api.Test;
 

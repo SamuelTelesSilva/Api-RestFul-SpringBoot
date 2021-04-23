@@ -1,6 +1,5 @@
-package com.example.carros.domain.dto;
+package com.example.carros.api.users;
 
-import com.example.carros.domain.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;

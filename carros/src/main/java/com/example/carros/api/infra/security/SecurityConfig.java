@@ -1,11 +1,11 @@
-package com.example.carros.api.security;
+package com.example.carros.api.infra.security;
 
 
 import com.example.carros.api.cors.CorsConfig;
-import com.example.carros.api.security.jwt.JwtAuthenticationFilter;
-import com.example.carros.api.security.jwt.JwtAuthorizationFilter;
-import com.example.carros.api.security.jwt.handler.AccessDeniedHandler;
-import com.example.carros.api.security.jwt.handler.UnauthorizedHandler;
+import com.example.carros.api.infra.security.jwt.JwtAuthenticationFilter;
+import com.example.carros.api.infra.security.jwt.JwtAuthorizationFilter;
+import com.example.carros.api.infra.security.jwt.handler.AccessDeniedHandler;
+import com.example.carros.api.infra.security.jwt.handler.UnauthorizedHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

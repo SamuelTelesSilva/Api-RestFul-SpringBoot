@@ -1,4 +1,4 @@
-package com.example.carros.domain.upload;
+package com.example.carros.api.upload;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,7 +6,6 @@ import java.util.Base64;
 
 import javax.annotation.PostConstruct;
 
-import com.example.carros.api.upload.UploadInput;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Acl;
 import com.google.cloud.storage.Blob;

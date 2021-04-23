@@ -1,6 +1,4 @@
-package com.example.carros.api.security.jwt.handler;
-
-import com.example.carros.api.security.jwt.ServletUtil;
+package com.example.carros.api.infra.security.jwt.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.example.carros.api.infra.security.jwt.ServletUtil;
+
 import java.io.IOException;
 
 @Component

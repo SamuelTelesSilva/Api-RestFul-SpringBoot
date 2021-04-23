@@ -1,4 +1,4 @@
-package com.example.carros.api.security.jwt;
+package com.example.carros.api.infra.security.jwt;
 
 import java.io.IOException;
 import java.util.List;
