@@ -29,7 +29,7 @@ public class ExceptionConfig extends ResponseEntityExceptionHandler {
             AccessDeniedException.class
     })
     public ResponseEntity accessDenied() {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new Error("Acesso negado"));
+         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new Error("Acesso negado"));
     }
 }
 
