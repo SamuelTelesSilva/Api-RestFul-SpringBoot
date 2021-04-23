@@ -23,6 +23,7 @@ class CarrosApplicationTests {
 	@Autowired
 	private CarroService carroService;
 
+	/*
 
 	@Test
 	public void teste(){
@@ -87,7 +88,7 @@ class CarrosApplicationTests {
     }
 
 
-
+*/
 
 	@Test
 	void contextLoads() {
