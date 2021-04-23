@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,12 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-/**
- * Video explicando sobre o put https://www.udemy.com/course/springboot-essencial/learn/lecture/14472942#overview
- */
 
 @RestController
 @RequestMapping("/api/v1/carros")
@@ -27,9 +26,18 @@ public class CarrosController {
     @Autowired
     private CarroService service;
 
+    /**
+     * Voce pode chamar na URL esses parametros
+     * api/v1/carros?page=1
+     * api/v1/carros?page=1&size=5
+     * @param page
+     * @param size
+     * @return
+     */
     @GetMapping
-    public ResponseEntity get(){
-        return ResponseEntity.ok(service.getCarros()); //mesma coisa do de baixo
+    public ResponseEntity get(@RequestParam(value = "page", defaultValue = "0") Integer page,
+                            @RequestParam(value = "size", defaultValue = "10") Integer size){
+        return ResponseEntity.ok(service.getCarros(PageRequest.of(page, size))); 
         //return new ResponseEntity<>(service.getCarros(), HttpStatus.OK);
     }
 
