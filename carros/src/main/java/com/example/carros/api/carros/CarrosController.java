@@ -47,9 +47,19 @@ public class CarrosController {
         return ResponseEntity.ok(carro);
     }
 
+    /**
+     * ?page=0&size=5
+     * /api/v1/carros/tipo/esportivos?page=0&size=5
+     * @param tipo
+     * @param page
+     * @param size
+     * @return
+     */
     @GetMapping("/tipo/{tipo}")
-    public ResponseEntity getCarroByTipo(@PathVariable("tipo") String tipo){
-        List<CarroDTO> carros = service.getCarrosByTipo(tipo);
+    public ResponseEntity getCarroByTipo(@PathVariable("tipo") String tipo,
+                                        @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                        @RequestParam(value = "size", defaultValue = "10") Integer size){
+        List<CarroDTO> carros = service.getCarrosByTipo(tipo, PageRequest.of(page, size));
 
         return carros.isEmpty() ? ResponseEntity.noContent().build() : 
                 ResponseEntity.ok(carros);
