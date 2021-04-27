@@ -1,7 +1,7 @@
 package com.example.carros.api.infra.security;
 
 
-import com.example.carros.api.cors.CorsConfig;
+
 import com.example.carros.api.infra.security.jwt.JwtAuthenticationFilter;
 import com.example.carros.api.infra.security.jwt.JwtAuthorizationFilter;
 import com.example.carros.api.infra.security.jwt.handler.AccessDeniedHandler;
@@ -48,8 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
                 .permitAll()
                 .anyRequest().authenticated()
+                .and().cors()
                 .and().csrf().disable()
-                .addFilter(new CorsConfig())
                 .addFilter(new JwtAuthenticationFilter(authManager))
                 .addFilter(new JwtAuthorizationFilter(authManager, userDetailsService))
                 .exceptionHandling()
