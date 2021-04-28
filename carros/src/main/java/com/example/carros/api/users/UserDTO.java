@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
+
+    private Long id;
     private String login;
     private String nome;
     private String email;
@@ -26,8 +28,8 @@ public class UserDTO {
         UserDTO dto = modelMapper.map(user, UserDTO.class);
 
         dto.roles = user.getRoles().stream()
-                .map(Role::getNome)
-                .collect(Collectors.toList());
+            .map(Role::getNome)
+            .collect(Collectors.toList());
 
         return dto;
     }
@@ -36,6 +38,12 @@ public class UserDTO {
         UserDTO dto = create(user);
         dto.token = token;
         return dto;
+    }
+
+
+    public static UserDTO createUser(User user) {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(user, UserDTO.class);
     }
 
     public String toJson() throws JsonProcessingException {
