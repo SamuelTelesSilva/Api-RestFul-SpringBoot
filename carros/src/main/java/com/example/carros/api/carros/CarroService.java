@@ -18,13 +18,14 @@ public class CarroService {
     @Autowired
     CarrosRepository carrosRepository;   
     
-    
+    /*
     public List<CarroDTO> getCarros(Pageable pageable){
         return carrosRepository.findAll(pageable).stream().map(CarroDTO::create).collect(Collectors.toList());
     }
+    */
     
     //Pageable
-    public Page<Carro> getCarrinhos(Pageable pageable){
+    public Page<Carro> getCarros(Pageable pageable){
 		return carrosRepository.findAll(pageable);
 	}
 

@@ -39,8 +39,12 @@ public class CarrosController {
      * @param size
      * @return
      */
+    @GetMapping
+	public ResponseEntity get(Pageable pageable) {
+		return ResponseEntity.ok(service.getCarros(pageable));
+	}
 
-
+    /*
     @GetMapping
     public ResponseEntity get(@RequestParam(value = "page", defaultValue = "0") Integer page,
                             @RequestParam(value = "size", defaultValue = "10") Integer size){
@@ -48,15 +52,7 @@ public class CarrosController {
         return ResponseEntity.ok(service.getCarros(PageRequest.of(page, size))); 
         //return new ResponseEntity<>(service.getCarros(), HttpStatus.OK);
     }
-
-
-    //Pageable
-    @GetMapping("/carrinhos")
-	public ResponseEntity get (Pageable pageable) {
-		
-		return ResponseEntity.ok(service.getCarrinhos(pageable));
-	}
-
+    */
 
     @GetMapping("/{id}")
     public ResponseEntity getCarroById(@PathVariable("id") Long id){
