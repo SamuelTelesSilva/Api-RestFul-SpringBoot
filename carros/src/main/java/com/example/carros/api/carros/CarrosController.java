@@ -44,16 +44,6 @@ public class CarrosController {
 		return ResponseEntity.ok(service.getCarros(pageable));
 	}
 
-    /*
-    @GetMapping
-    public ResponseEntity get(@RequestParam(value = "page", defaultValue = "0") Integer page,
-                            @RequestParam(value = "size", defaultValue = "10") Integer size){
-
-        return ResponseEntity.ok(service.getCarros(PageRequest.of(page, size))); 
-        //return new ResponseEntity<>(service.getCarros(), HttpStatus.OK);
-    }
-    */
-
     @GetMapping("/{id}")
     public ResponseEntity getCarroById(@PathVariable("id") Long id){
         CarroDTO carro = service.getCarrosById(id);
