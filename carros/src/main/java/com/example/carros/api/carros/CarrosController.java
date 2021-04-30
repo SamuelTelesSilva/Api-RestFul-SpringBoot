@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 
 @RestController
@@ -26,6 +29,8 @@ public class CarrosController {
     @Autowired
     private CarroService service;
 
+
+
     /**
      * Voce pode chamar na URL esses parametros
      * api/v1/carros?page=1
@@ -34,12 +39,24 @@ public class CarrosController {
      * @param size
      * @return
      */
+
+
     @GetMapping
     public ResponseEntity get(@RequestParam(value = "page", defaultValue = "0") Integer page,
                             @RequestParam(value = "size", defaultValue = "10") Integer size){
+
         return ResponseEntity.ok(service.getCarros(PageRequest.of(page, size))); 
         //return new ResponseEntity<>(service.getCarros(), HttpStatus.OK);
     }
+
+
+    //Pageable
+    @GetMapping("/carrinhos")
+	public ResponseEntity get (Pageable pageable) {
+		
+		return ResponseEntity.ok(service.getCarrinhos(pageable));
+	}
+
 
     @GetMapping("/{id}")
     public ResponseEntity getCarroById(@PathVariable("id") Long id){

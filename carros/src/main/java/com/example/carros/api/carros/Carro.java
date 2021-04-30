@@ -25,6 +25,7 @@ public class Carro {
     private String urlVideo;
     private String latitude;
     private String longitude;
+    private String url_foto;
 
     
 }

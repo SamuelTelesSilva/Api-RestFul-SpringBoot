@@ -10,18 +10,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-
+import org.springframework.data.domain.Page;
 
 @Service
 public class CarroService {
 
     @Autowired
-    CarrosRepository carrosRepository;
+    CarrosRepository carrosRepository;   
     
-
+    
     public List<CarroDTO> getCarros(Pageable pageable){
         return carrosRepository.findAll(pageable).stream().map(CarroDTO::create).collect(Collectors.toList());
     }
+    
+    //Pageable
+    public Page<Carro> getCarrinhos(Pageable pageable){
+		return carrosRepository.findAll(pageable);
+	}
 
     public CarroDTO getCarrosById(Long id){
         Optional<Carro> carro = carrosRepository.findById(id);
